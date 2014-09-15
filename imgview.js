@@ -38,7 +38,7 @@ VERSION: '1.0',
 AUTHOR: 'simonbosman@gmail.com',
 show: function(){
 	with(simon.version){
-		window.alert(NAME + ' v' + VERSION + ' by: ' + AUTHOR);
+		console.log(NAME + ' v' + VERSION + ' by: ' + AUTHOR);
 		}
 	}
 };
@@ -59,15 +59,7 @@ ERR_PARAM: 'Not an valid Parameter',
 ERR_LOCAL: 'Local Vars not set'
 };
 
-/**
- * Help needed, could someone show how to implement this
- * instead of window alert
- * 
- */
 
-simon.debugWindow = function(){
-	
-};
 /**
  * This class creates the legend containing the zoomfunctions
  *
@@ -187,7 +179,7 @@ simon.CanvasZoomMod.prototype = {
 	}
 	catch(e)
 	{
-		(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.CanvasZoomMod->init ' + e.message) : window.location.reload();
+		if (simon.DEBUG) console.log(simon.version.NAME + ' simon.CanvasZoomMod->init ' + e.message);
 	}
 	finally
 	{
@@ -365,7 +357,7 @@ simon.CanvasMod.prototype = {
 	}
 	catch(e)
 	{
-		(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.CanvasMod->init ' + e.message) : window.location.reload();
+		if (simon.DEBUG) console.log(simon.version.NAME + ' simon.CanvasMod->init ' + e.message);
 	}
 	finally
 	{
@@ -544,7 +536,7 @@ simon.ComputersMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.ComputersMod->init ' + e.message) : window.location.reload();
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.ComputersMod->init ' + e.message);
 		}
 		finally
 		{
@@ -593,7 +585,7 @@ simon.EventMod.prototype = {
 
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload();
+			if (simon.DEBUG) console.log(e) ;
 		}
 	},
 
@@ -619,7 +611,7 @@ simon.EventMod.prototype = {
 
 	catch(e)
 	{
-		(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.EventMod->addEv ' + e.message) : window.location.reload();
+		if (simon.DEBUG) console.log(simon.version.NAME + ' simon.EventMod->addEv ' + e.message) ;
 	}
 	},
 
@@ -642,7 +634,7 @@ simon.EventMod.prototype = {
 
 	catch(e)
 	{
-		(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.EventMod->removeEv ' + e.message) : window.location.reload();
+		if (simon.DEBUG) console.log(simon.version.NAME + ' simon.EventMod->removeEv ' + e.message) ;
 	}
 	}
 };
@@ -715,7 +707,7 @@ simon.HandlersCanvMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCanvMod->MouseDown ' + e.message) : window.location.reload();
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCanvMod->MouseDown ' + e.message) ;
 		}
 		finally
 		{
@@ -790,7 +782,7 @@ simon.HandlersCanvMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCanvMod->MouseMove ' + e.message) : window.location.reload();
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCanvMod->MouseMove ' + e.message) ;
 	
 		}
 		finally
@@ -850,7 +842,7 @@ simon.HandlersCanvMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCanvMod->MouseUp ' + e.message) : window.location.reload();
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCanvMod->MouseUp ' + e.message) ;
 		}
 		finally
 		{
@@ -909,7 +901,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->init ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->init ' + e.message) ;
 		}
 
 	},
@@ -923,7 +915,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseDown ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseDown ' + e.message) ;
 		}
 		finally
 		{
@@ -941,7 +933,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseDownDefault ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseDownDefault ' + e.message) ;
 		}
 		finally
 		{
@@ -988,7 +980,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseDownEdit ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseDownEdit ' + e.message) ;
 		}
 		finally
 		{
@@ -1031,7 +1023,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseMove ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseMove ' + e.message) ;
 		}
 	},
 	/**
@@ -1048,7 +1040,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseOver ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseOver ' + e.message) ;
 		}
 		finally
 		{
@@ -1180,7 +1172,7 @@ simon.HandlersCompMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersCompMod->mouseUp ' + e.message) : window.location.reload(1);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersCompMod->mouseUp ' + e.message);
 
 		}
 		finally
@@ -1237,7 +1229,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->init ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->init ' + e.message) ;
 
 		}
 	},
@@ -1255,7 +1247,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) ;
 		}
 		finally
 		{
@@ -1276,7 +1268,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) ;
 		}
 		finally
 		{
@@ -1335,7 +1327,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) ;
 		}
 		finally
 		{
@@ -1373,7 +1365,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownMin ' + e.message) ;
 		}
 		finally
 		{
@@ -1431,7 +1423,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownPlus ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownPlus ' + e.message) ;
 		}
 		finally
 		{
@@ -1468,7 +1460,7 @@ simon.HandlersZoomMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownPlus ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.HandlersZoomMod->mouseDownPlus ' + e.message) ;
 		}
 		finally
 		{
@@ -1528,7 +1520,7 @@ simon.PositionMod.prototype = {
 
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 	},
 
@@ -1582,7 +1574,7 @@ simon.PositionMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 		},
 	/**
@@ -1604,7 +1596,7 @@ simon.PositionMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 
 	},
@@ -1623,7 +1615,7 @@ simon.PositionMod.prototype = {
 		}
 		catch(e)
 		{
-		 	(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.PositionMod->movPosX ' + e.message) : window.location.reload(true);
+		 	if (simon.DEBUG) console.log(simon.version.NAME + ' simon.PositionMod->movPosX ' + e.message) ;
 		}
 
 	},
@@ -1642,7 +1634,7 @@ simon.PositionMod.prototype = {
 		}
 		catch(e)
 		{
-		 	 	(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.PositionMod->movPosY ' + e.message) : window.location.reload(true);
+		 	 	if (simon.DEBUG) console.log(simon.version.NAME + ' simon.PositionMod->movPosY ' + e.message) ;
 		}
 	}
 };
@@ -1676,7 +1668,7 @@ simon.StyleRuleMod.prototype = {
 
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 	},
 
@@ -1696,7 +1688,7 @@ simon.StyleRuleMod.prototype = {
 
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.StyleRuleMod->setStyle ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.StyleRuleMod->setStyle ' + e.message) ;
 		}
 
 	},
@@ -1719,7 +1711,7 @@ simon.StyleRuleMod.prototype = {
 
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.StyleRuleMod->getStyle ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.StyleRuleMod->getStyle ' + e.message) ;
 		}
 
 	}
@@ -1758,7 +1750,7 @@ simon.ZoomImgMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 	},
 
@@ -1783,7 +1775,7 @@ simon.ZoomImgMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ?  window.alert(simon.version.NAME + ' simon.ZoomMod->ZoomPerc ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG)  console.log(simon.version.NAME + ' simon.ZoomMod->ZoomPerc ' + e.message) ;
 		}
 		finally
 		{
@@ -1831,7 +1823,7 @@ simon.ZoomImgMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(simon.version.NAME + ' simon.ZoomMod->ZoomFit ' + e.message) : window.location.reload(true);
+			if (simon.DEBUG) console.log(simon.version.NAME + ' simon.ZoomMod->ZoomFit ' + e.message) ;
 		}
 		finally
 		{
@@ -1859,7 +1851,7 @@ simon.ZoomImgMod.prototype = {
 		}
 		catch(e)
 		{
-			(simon.DEBUG) ? window.alert(e) : window.location.reload(true);
+			if (simon.DEBUG) console.log(e) ;
 		}
 	}
 };
