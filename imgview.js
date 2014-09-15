@@ -282,7 +282,7 @@ simon.CanvasMod.prototype = {
 			for(var prop in this.stylesShared){
 				styleImgCanv.setStyle(prop, this.stylesShared[prop]);
 			}
-			(this.ImgCanv.attachEvent) ? styleImgCanv.setStyle('cursor', 'url(grab.cur), hand') : styleImgCanv.setStyle('cursor', '-moz-grab');
+			styleImgCanv.setStyle('cursor', 'url(grab.cur), hand');
 
 			for(var prop in this.ImgCanvStyles){
 				styleImgCanv.setStyle(prop, this.ImgCanvStyles[prop]);
@@ -676,7 +676,7 @@ simon.HandlersCanvMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			styleImgCanv = new simon.StyleRuleMod(this.obj);
-			(this.obj.attachEvent) ? styleImgCanv.setStyle('cursor', 'url(grabbing.cur), hand') : styleImgCanv.setStyle('cursor', '-moz-grabbing');
+			styleImgCanv.setStyle('cursor', 'url(grabbing.cur), hand');
 			HandlerMouseMove = new simon.HandlersCanvMod(this.obj);
 			this.ev = new simon.EventMod(this.obj);
 			this.ev.addEv('mousemove', HandlerMouseMove.mouseMove);
@@ -804,7 +804,7 @@ simon.HandlersCanvMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			this.styleImgCanv = new simon.StyleRuleMod(this.obj);
-			(this.obj.attachEvent) ? this.styleImgCanv.setStyle('cursor', 'url(/templates/images/grab.cur), hand') : this.styleImgCanv.setStyle('cursor', '-moz-grab');
+			this.styleImgCanv.setStyle('cursor', 'url(grab.cur), hand');
 			this.ev = new simon.EventMod(this.obj);
 			this.ev.removeEv('mousemove', HandlerMouseMove.mouseMove);
 			this.ImgContId = this.obj.id;
@@ -911,7 +911,7 @@ simon.HandlersCompMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			this.Id = this.obj.id.substr(8,4);
-			window.location.replace('/werkplekken/details/' + this.Id);
+			alert('Component ' + this.Id + ' clicked');
 		}
 		catch(e)
 		{
@@ -929,7 +929,7 @@ simon.HandlersCompMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			this.Id = this.obj.id.substr(8,4);
-			window.location.replace('/werkplekken/details/' + this.Id);
+			alert('Component ' + this.Id + ' clicked');
 		}
 		catch(e)
 		{
@@ -965,10 +965,10 @@ simon.HandlersCompMod.prototype = {
 				w = parseInt(w)/2;
 				h = parseInt(h)/2;
 				(this.obj.attachEvent) ? styleComp.setStyle('filter', 'alpha(opacity=75)') : styleComp.setStyle('opacity', '0.75');
-				if(this.obj.addEventListener)
+				//if(this.obj.addEventListener)
 					eventObj = new simon.EventMod(window);
-				else
-					eventObj = new simon.EventMod(document);
+				//else
+					//eventObj = new simon.EventMod(document);
 				eventObj.addEv('mousemove', HandlerMouseMove.mouseMove);
 				eventObj.addEv('mouseup', HandlerMouseMove.mouseUp);
 				eventObjComp = new simon.EventMod(CompCont);
@@ -1139,7 +1139,7 @@ simon.HandlersCompMod.prototype = {
 							}
 							this.styleComputerBak.setStyle('height', this.ComputerBakHeight);
 							var parameters = 'id=' + CompCont.id.substr(8) + '&loc=' + CompCont.LocationId + '&cx=' + 0 + '&cy=' + 0;
-							var c1 = new Ajax.Request('/werkplekken/setWorkstationPosition', { method: 'post', postBody: parameters, onComplete:handleRequest});
+							//var c1 = new Ajax.Request('/werkplekken/setWorkstationPosition', { method: 'post', postBody: parameters, onComplete:handleRequest});
 						}
 					}
 				/*
@@ -1767,10 +1767,17 @@ simon.ZoomImgMod.prototype = {
 		{
 			if(parseInt(perc)){
 				aspectRatio = parseFloat(this.imgObj.width/this.imgObj.height);
+				
+				var orgWidth = this.imgObj.width;
+				var orgHeight = this.imgObj.height;
+				var orgLeft = this.imgObj.offsetLeft;
+				var orgTop = this.imgObj.offsetTop;
+				
 				this.imgObj.width = Math.round(this.imgObj.width *(perc/100));
 				this.imgObj.height = this.imgObj.width / aspectRatio;
-				//styleImgCont = new simon.StyleRuleMod(ImgCont);
-				//styleImgCanv = new simon.StyleRuleMod(ImgCanv);
+			
+				this.imgObj.style.left = orgLeft + ((orgWidth - Number(this.imgObj.width))/2) + "px";
+				this.imgObj.style.top = orgTop + ((orgHeight - Number(this.imgObj.height))/2) + "px";
 			}
 		}
 		catch(e)
@@ -1779,8 +1786,6 @@ simon.ZoomImgMod.prototype = {
 		}
 		finally
 		{
-			//delete styleImgCanv;
-			//delete styleImgCont;
 		}
 	},
 
