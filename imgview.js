@@ -384,8 +384,6 @@ simon.ComputersMod = function(CompWidth, CompHeight, PosX, PosY, CompImg, CompId
 	this.CompImg.src ='';
 	this.CompImg.id = 'CompImg'.concat(CompId);
 	this.CompImg.title = 'Computer';
-	//this.CompAll = document.createElement('DIV');
-	//this.CompAll.id = 'CompAll';
 	this.CompWidth = 0;
 	this.CompHeight = 0;
 	this.PosX = 0;
@@ -530,7 +528,7 @@ simon.ComputersMod.prototype = {
 			document.body.appendChild(this.CompCont);
 			HandlersComputer = new simon.HandlersCompMod(this.CompCont);
 			evComp= new simon.EventMod(this.CompCont);
-			//evComp.addEv('mouseover', HandlersComputer.mouseOver);
+			evComp.addEv('mouseover', HandlersComputer.mouseOver);
 			evComp.addEv('mousedown', HandlersComputer.mouseDownEdit);
 			simon.Containers.Computers[this.CompCont.id] = this.CompCont;
 		}
@@ -911,7 +909,6 @@ simon.HandlersCompMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			this.Id = this.obj.id.substr(8,4);
-			alert('Component ' + this.Id + ' clicked');
 		}
 		catch(e)
 		{
@@ -929,7 +926,6 @@ simon.HandlersCompMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			this.Id = this.obj.id.substr(8,4);
-			alert('Component ' + this.Id + ' clicked');
 		}
 		catch(e)
 		{
@@ -957,7 +953,7 @@ simon.HandlersCompMod.prototype = {
 				CompOrgX = parseInt(PosComp.getPosX());
 				CompOrgY = parseInt(PosComp.getPosY());
 				styleComp = new simon.StyleRuleMod(CompCont);
-				//(this.obj.attachEvent) ? styleComp.setStyle('cursor', 'url(/templates/images/grabbing.cur), hand') : styleComp.setStyle('cursor', '-moz-grabbing');
+				styleComp.setStyle('cursor', 'url(grabbing.cur), hand');
 				styleComp.setStyle('zIndex', '1000');
 				styleComp.setStyle('backgroundColor', 'pink');
 				w = styleComp.getStyle('width').slice(0, -2);
@@ -965,10 +961,7 @@ simon.HandlersCompMod.prototype = {
 				w = parseInt(w)/2;
 				h = parseInt(h)/2;
 				(this.obj.attachEvent) ? styleComp.setStyle('filter', 'alpha(opacity=75)') : styleComp.setStyle('opacity', '0.75');
-				//if(this.obj.addEventListener)
-					eventObj = new simon.EventMod(window);
-				//else
-					//eventObj = new simon.EventMod(document);
+				eventObj = new simon.EventMod(window);
 				eventObj.addEv('mousemove', HandlerMouseMove.mouseMove);
 				eventObj.addEv('mouseup', HandlerMouseMove.mouseUp);
 				eventObjComp = new simon.EventMod(CompCont);
@@ -1036,7 +1029,7 @@ simon.HandlersCompMod.prototype = {
 		{
 			this.obj = (ev.target || ev.srcElement);
 			styleHover = new simon.StyleRuleMod(this.obj);
-			//(this.obj.attachEvent) ? styleHover.setStyle('cursor', 'url(/templates/images/grab.cur), hand') : styleHover.setStyle('cursor', '-moz-grab');
+			styleHover.setStyle('cursor', 'url(grab.cur), hand');
 		}
 		catch(e)
 		{
@@ -1092,7 +1085,7 @@ simon.HandlersCompMod.prototype = {
 							CompX = Math.round(CompX / CompCont.ZoomFactor);
 							CompY = Math.round(CompY / CompCont.ZoomFactor);
 							var parameters = 'id=' + CompCont.id.substr(8) + '&loc=' + CompCont.LocationId + '&cx=' + CompX + '&cy=' + CompY;
-							var c1 = new Ajax.Request('/werkplekken/setWorkstationPosition', { method: 'post', postBody: parameters, onComplete:handleRequest});
+							//var c1 = new Ajax.Request('/werkplekken/setWorkstationPosition', { method: 'post', postBody: parameters, onComplete:handleRequest});
 						}
 						else{
 							CompCont.CompOnCanvas = false;
@@ -1163,10 +1156,7 @@ simon.HandlersCompMod.prototype = {
 			styleComp.setStyle('zIndex', '2');
 				
 			(CompCont.attachEvent) ? styleComp.setStyle('filter', 'alpha(opacity=100)') : styleComp.setStyle('opacity', '1.0');
-			if(CompCont.addEventListener)
-				eventWindow = new simon.EventMod(window);
-			else
-				eventWindow = new simon.EventMod(document);
+			eventWindow = new simon.EventMod(window);
 			eventWindow.removeEv('mousemove', HandlerMouseMove.mouseMove);
 			eventWindow.removeEv('mouseup', HandlerMouseMove.mouseUp);
 		}
